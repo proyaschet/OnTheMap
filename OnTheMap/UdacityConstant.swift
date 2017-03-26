@@ -14,13 +14,17 @@ extension UdacityClient
         static let SignUpURL = "https://www.udacity.com/account/auth#!/signup"
     }
     
+    struct Domain {
+        static let domain = "UdacityClient"
+    }
+    
     struct Errors {
         static let UnableToLogin = "Unable to login."
         static let UnableToLogout = "Unable to logout."
         static let userData = "Cannot access user data."
     }
     
-    struct Components {
+    struct Urlcomponents {
         static let Scheme = "https"
         static let Host = "www.udacity.com"
         static let Path = "/api"

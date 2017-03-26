@@ -9,6 +9,10 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    
+    
+    let udacityClient = UdacityClient.singleton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +24,17 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var debugLabel: UILabel!
+    @IBOutlet weak var signInButton: UIButton!
+    @IBOutlet weak var signUpButton: UIButton!
 
+    @IBAction func Login(_ sender: Any) {
+        
+  
+ 
+    }
+    @IBOutlet weak var SignUp: UIButton!
 }
 
