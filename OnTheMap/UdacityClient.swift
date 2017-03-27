@@ -56,10 +56,10 @@ class func singleton() -> UdacityClient
         
         let loginUrl = session.urlGenerator(URLMethods.session)
         print(loginUrl)
-        var loginBody = [String : AnyObject]()
+        var login = [String : AnyObject]()
         
-        loginBody = [HTTPBodyKeys.Username : username as AnyObject , HTTPBodyKeys.Password : password as AnyObject]
-       requestUdacity(url: loginUrl, method: .POST, body: loginBody, headers: nil) { (parsedResult, error) in
+        login = [HTTPBodyKeys.Username : username as AnyObject , HTTPBodyKeys.Password : password as AnyObject]
+       requestUdacity(url: loginUrl, method: .POST, body: login, headers: nil) { (parsedResult, error) in
         guard error == nil else {
             completionHandler(nil,error!)
             return
@@ -74,9 +74,64 @@ class func singleton() -> UdacityClient
         }
      //to add error
         
-     
+     }
+    
+    func cookie(_ name : String) -> HTTPCookie?
+    {
+        let sharedCookieStorage = HTTPCookieStorage.shared
+        for cookie in sharedCookieStorage.cookies! {
+            if cookie.name == name {
+                return cookie
+            }
+        }
+        return nil
         
+    }
+    
+   func logout(_ completionHandler: @escaping (_ success: Bool, _ error: NSError?) -> Void) {
+    
+    let logoutUrl = session.urlGenerator(URLMethods.session)
+    var logout = [String : AnyObject]()
+    let name = "XSRF-TOKEN"
+     if let xsrfCookie = cookie(name)
+     {
+        logout[HeaderKeys.XSRFToken] = xsrfCookie
+    }
+    requestUdacity(url: logoutUrl, method: .DELETE) { (parsedResult, error) in
+        guard error == nil else
+        {
+            completionHandler(false,error)
+            return
+        }
+        if let parsedResult = parsedResult , let _ = parsedResult[JSONResponseKeys.Session] as? [String:AnyObject]
+        {
+            completionHandler(true,nil)
+            return
+        }
         
+    }
+     //to add error
+    }
+    
+    func getStudentDetails(_ userKey : String , completionHandler : @escaping(_ student :Student? , _ error : NSError?) -> Void)
+    {
+        let userurl = session.urlGenerator(URLMethods.session, withPathExtension: "\(userKey)")
+        requestUdacity(url: userurl, method: .GET) { (parsedResult, error) in
+            guard error == nil else
+            {
+                completionHandler(nil,error)
+                return
+            }
+            if let parsedResult = parsedResult , let user = parsedResult[JSONResponseKeys.User],let firstName = user[JSONResponseKeys.FirstName] as? String,let lastname = user[JSONResponseKeys.LastName] as? String
+            {
+                print(firstName)
+                print(lastname)
+                let student = Student(uniqueKey: userKey, firstName: firstName, lastName: lastname,mediaURL : "")
+                completionHandler(student,nil)
+                return
+            }
+        }
+        //to add error
     }
     
     

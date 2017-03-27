@@ -32,7 +32,6 @@ class ViewController: UIViewController {
 
     @IBAction func Login(_ sender: Any) {
         
-  
  
     }
     @IBOutlet weak var SignUp: UIButton!

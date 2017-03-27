@@ -36,10 +36,7 @@ extension UdacityClient
         static let delete = "DELETE"
     }
     
-    struct Token {
-        static let XSRFToken = "XSRF-TOKEN"
-    }
-    
+  
     struct HeaderKeys {
         static let Accept = "Accept"
         static let ContentType = "Content-Type"

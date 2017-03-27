@@ -29,4 +29,5 @@ struct Student
         self.lastName = lastName
         self.mediaURL = mediaURL
     }
+ 
 }
