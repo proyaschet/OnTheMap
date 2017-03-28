@@ -71,14 +71,7 @@ extension ParseClient
         static let MapString = "mapString"
     }
     
-    struct DefaultValues {
-        static let ObjectID = "[No Object ID]"
-        static let UniqueKey = "[No Unique Key]"
-        static let FirstName = "[No First Name]"
-        static let LastName = "[No Last Name]"
-        static let MediaURL = "[No Media URL]"
-        static let MapString = "[No Map String]"
-    }
+
     struct Notifications {
         static let ObjectUpdated = "Updated"
         static let ObjectUpdatedError = "Error"

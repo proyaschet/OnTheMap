@@ -22,7 +22,6 @@ struct Student
         lastName = ""
         mediaURL = ""
     }
-    
     init(uniqueKey: String, firstName: String, lastName: String, mediaURL: String) {
         self.uniqueKey = uniqueKey
         self.firstName = firstName

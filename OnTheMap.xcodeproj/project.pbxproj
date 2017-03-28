@@ -165,8 +165,8 @@
 		A51790841E86456100853127 /* Udacity */ = {
 			isa = PBXGroup;
 			children = (
-				A51790911E8655B300853127 /* UdacityConstant.swift */,
 				A51790931E865CFF00853127 /* UdacityClient.swift */,
+				A51790911E8655B300853127 /* UdacityConstant.swift */,
 			);
 			name = Udacity;
 			sourceTree = "<group>";
