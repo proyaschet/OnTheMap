@@ -26,5 +26,30 @@ class ParseClient
     }
     
     
+    func makeRequestForUrl(url : URL , methhod : HTTPMethod , body :[String : AnyObject]? = nil,completionhandler: @escaping(_ parsedResult :[String:AnyObject]?,_ error : NSError?) -> Void ){
+        
+       
+        let headers = [
+            HeaderKeys.AppId: HeaderValues.AppId,
+            HeaderKeys.APIKey: HeaderValues.APIKey,
+            HeaderKeys.Accept: HeaderValues.JSON,
+            HeaderKeys.ContentType: HeaderValues.JSON
+        ]
+        
+       session.makeRequestCommon(url, method: methhod, headers: headers, body: body) { (data, error) in
+        if let data = data
+        {
+            let parsedResult = try! JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:AnyObject]
+            completionhandler(parsedResult,nil)
+            
+        }
+        else
+        {
+            completionhandler(nil,error)
+        }
+        }
+    }
     
 }
+
+
