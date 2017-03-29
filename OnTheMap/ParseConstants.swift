@@ -21,7 +21,7 @@ extension ParseClient
         static let couldNotUpdateLocation = "Student location could not be updated."
     }
     
-    struct Objects {
+    struct urlMethod {
         static let studentLocation = "/StudentLocation"
     }
     
