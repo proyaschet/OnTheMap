@@ -23,6 +23,13 @@
 		A51790981E865D5F00853127 /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51790971E865D5F00853127 /* ParseClient.swift */; };
 		A5D92B9D1E87A9950027B6AE /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D92B9C1E87A9950027B6AE /* Session.swift */; };
 		A5D92B9F1E8802DC0027B6AE /* CommonConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D92B9E1E8802DC0027B6AE /* CommonConstants.swift */; };
+		A5DE793C1E8F890B0097FE57 /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DE793B1E8F890B0097FE57 /* GCDBlackBox.swift */; };
+		A5DE793D1E8F890B0097FE57 /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DE793B1E8F890B0097FE57 /* GCDBlackBox.swift */; };
+		A5DE793E1E8F890B0097FE57 /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DE793B1E8F890B0097FE57 /* GCDBlackBox.swift */; };
+		A5DE79441E8F8C550097FE57 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DE79431E8F8C550097FE57 /* DataSource.swift */; };
+		A5F688E91E91626100062E0E /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F688E81E91626100062E0E /* TabViewController.swift */; };
+		A5F688EB1E9176DD00062E0E /* PostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F688EA1E9176DD00062E0E /* PostingViewController.swift */; };
+		A5F688ED1E91847B00062E0E /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F688EC1E91847B00062E0E /* TableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +72,11 @@
 		A51790971E865D5F00853127 /* ParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
 		A5D92B9C1E87A9950027B6AE /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		A5D92B9E1E8802DC0027B6AE /* CommonConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonConstants.swift; sourceTree = "<group>"; };
+		A5DE793B1E8F890B0097FE57 /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
+		A5DE79431E8F8C550097FE57 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
+		A5F688E81E91626100062E0E /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
+		A5F688EA1E9176DD00062E0E /* PostingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostingViewController.swift; sourceTree = "<group>"; };
+		A5F688EC1E91847B00062E0E /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,9 +128,11 @@
 			isa = PBXGroup;
 			children = (
 				A51790541E85A4B100853127 /* AppDelegate.swift */,
+				A5DE793B1E8F890B0097FE57 /* GCDBlackBox.swift */,
 				A5D92B9E1E8802DC0027B6AE /* CommonConstants.swift */,
 				A51790861E8649A000853127 /* Model */,
 				A5D92B9B1E87A8730027B6AE /* Controller */,
+				A51790831E85A64300853127 /* Assets */,
 				A51790601E85A4B100853127 /* Info.plist */,
 			);
 			path = OnTheMap;
@@ -183,6 +197,7 @@
 		A51790861E8649A000853127 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A5DE79431E8F8C550097FE57 /* DataSource.swift */,
 				A51790891E864CA600853127 /* Student.swift */,
 				A517908B1E864CB600853127 /* Location.swift */,
 				A517908F1E864CE600853127 /* User.swift */,
@@ -195,7 +210,9 @@
 			isa = PBXGroup;
 			children = (
 				A51790561E85A4B100853127 /* LoginViewController.swift */,
-				A51790831E85A64300853127 /* Assets */,
+				A5F688E81E91626100062E0E /* TabViewController.swift */,
+				A5F688EA1E9176DD00062E0E /* PostingViewController.swift */,
+				A5F688EC1E91847B00062E0E /* TableViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -338,14 +355,19 @@
 				A5D92B9D1E87A9950027B6AE /* Session.swift in Sources */,
 				A51790981E865D5F00853127 /* ParseClient.swift in Sources */,
 				A51790571E85A4B100853127 /* LoginViewController.swift in Sources */,
+				A5DE79441E8F8C550097FE57 /* DataSource.swift in Sources */,
 				A517908A1E864CA600853127 /* Student.swift in Sources */,
+				A5DE793C1E8F890B0097FE57 /* GCDBlackBox.swift in Sources */,
 				A517908C1E864CB600853127 /* Location.swift in Sources */,
 				A51790921E8655B300853127 /* UdacityConstant.swift in Sources */,
 				A51790901E864CE600853127 /* User.swift in Sources */,
 				A51790941E865CFF00853127 /* UdacityClient.swift in Sources */,
 				A51790551E85A4B100853127 /* AppDelegate.swift in Sources */,
+				A5F688ED1E91847B00062E0E /* TableViewController.swift in Sources */,
 				A5D92B9F1E8802DC0027B6AE /* CommonConstants.swift in Sources */,
+				A5F688E91E91626100062E0E /* TabViewController.swift in Sources */,
 				A51790961E865D3D00853127 /* ParseConstants.swift in Sources */,
+				A5F688EB1E9176DD00062E0E /* PostingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,6 +375,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5DE793D1E8F890B0097FE57 /* GCDBlackBox.swift in Sources */,
 				A517906A1E85A4B100853127 /* OnTheMapTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -361,6 +384,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5DE793E1E8F890B0097FE57 /* GCDBlackBox.swift in Sources */,
 				A51790751E85A4B100853127 /* OnTheMapUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

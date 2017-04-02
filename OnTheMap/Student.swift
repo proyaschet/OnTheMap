@@ -9,6 +9,8 @@
 
 struct Student
 {
+    
+    
     let uniqueKey: String
     let firstName: String
     let lastName: String
@@ -28,5 +30,8 @@ struct Student
         self.lastName = lastName
         self.mediaURL = mediaURL
     }
+    
+    
+
  
 }

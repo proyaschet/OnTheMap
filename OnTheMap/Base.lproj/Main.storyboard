@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -100,6 +101,10 @@
                                     <constraint firstItem="Gyw-Iq-6ge" firstAttribute="leading" secondItem="0Zk-rf-Eaz" secondAttribute="leading" id="qA5-Ra-o7C"/>
                                 </constraints>
                             </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="DLS-Y2-cIC">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.94064563512802124" green="0.95897918939590454" blue="0.17609745264053345" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -110,12 +115,13 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="SignUp" destination="0Gx-H9-MdI" id="AM1-a5-csb"/>
+                        <outlet property="activityIndicator" destination="DLS-Y2-cIC" id="mEl-GP-551"/>
                         <outlet property="debugLabel" destination="J6t-yP-mBb" id="vdh-aB-DNy"/>
                         <outlet property="emailTextField" destination="YR4-QA-9vd" id="Rgj-Qj-awg"/>
                         <outlet property="passwordTextField" destination="ksN-yu-OHJ" id="6Aj-1r-zgQ"/>
                         <outlet property="signInButton" destination="tS7-UR-c9Z" id="xOG-GE-Pr5"/>
-                        <outlet property="signUpButton" destination="0Gx-H9-MdI" id="XuH-e0-khU"/>
+                        <outlet property="signUpButton" destination="0Gx-H9-MdI" id="ebT-ck-KwT"/>
+                        <segue destination="DJo-cQ-IRU" kind="presentation" identifier="login" id="VMr-XV-VGP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -158,7 +164,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UCO-Vz-cWG" id="UiL-JH-E85">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -209,11 +215,29 @@
             </objects>
             <point key="canvasLocation" x="1788" y="-256.82158920539734"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--On The Map-->
         <scene sceneID="XCg-sP-lWX">
             <objects>
-                <tabBarController id="vIH-Oi-dMm" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="7PG-db-fa4"/>
+                <tabBarController id="vIH-Oi-dMm" customClass="TabViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" title="On The Map" id="7PG-db-fa4">
+                        <barButtonItem key="leftBarButtonItem" title="Log Out" id="eB6-zZ-JvG">
+                            <connections>
+                                <action selector="logout:" destination="vIH-Oi-dMm" id="FE4-AA-JFV"/>
+                            </connections>
+                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem image="icon_refresh" id="pVD-fM-Sbg">
+                                <connections>
+                                    <action selector="refreshUsers:" destination="vIH-Oi-dMm" id="QPZ-UK-YUw"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="icon_pin" id="aWh-Ma-epW">
+                                <connections>
+                                    <action selector="addUserLocation:" destination="vIH-Oi-dMm" id="4tC-Qh-wQs"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="2Ar-3H-4Py">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -230,6 +254,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="icon_pin" width="24" height="24"/>
+        <image name="icon_refresh" width="24" height="24"/>
         <image name="logo-u" width="62" height="62"/>
     </resources>
 </document>

@@ -43,5 +43,15 @@ init(dictionary : [String : AnyObject])
         self.student = student
         self.location = location
     }
+    
+    static func generateStudentLocations(_ student : [[String : AnyObject]]) -> [userLocation]
+    {
+        var users = [userLocation]()
+        for use in student
+        {
+            users.append(userLocation(dictionary: use))
+        }
+        return users
+    }
 }
 

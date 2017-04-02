@@ -53,7 +53,9 @@ class ParseClient
     func getStudentLocation(uniqueKey : String , completionHandler : @escaping(_ user : userLocation?,_ error :NSError? ) -> Void )
     {
         //might be error have a look
-        let locationUrl = session.urlGenerator(urlMethod.studentLocation, parameters: [ParameterKeys.Where :"{\"\(ParameterKeys.uniqueKey)\":\"\(uniqueKey)}\"" as AnyObject])
+        let locationUrl = session.urlGenerator(urlMethod.studentLocation, parameters: [ParameterKeys.Where :"{\"\(ParameterKeys.uniqueKey)\":\"\(uniqueKey)\"}" as AnyObject])
+        //{"un":"12"}
+        print(locationUrl)
         
         ParseRequest(url: locationUrl, methhod: .GET) { (parsedResult, error) in
             guard(error == nil) else
@@ -73,6 +75,28 @@ class ParseClient
           //add error
         }
     }
+    
+    
+    func getStudentLocations(_ completionHandler : @escaping (_ user : [userLocation]? , _ error : NSError?
+        )->Void)  {
+        let locationUrl = session.urlGenerator(urlMethod.studentLocation, parameters: [ParameterKeys.limit : ParameterValues.value as AnyObject , ParameterKeys.order : ParameterValues.Updated as AnyObject])
+        
+        ParseRequest(url: locationUrl, methhod: .GET) { (parsedResult, error) in
+            guard error == nil else {
+                completionHandler(nil, error)
+                return
+            }
+            if let parsedResult = parsedResult , let use = parsedResult[JSONResponseKeys.Results] as?[[String:AnyObject]]
+            {
+                completionHandler(userLocation.generateStudentLocations(use),nil)
+                return
+                
+            }
+        }
+        
+    }
+    
+    
     
     func postStudentLocation(_ mediaUrl : String , _ location : userLocation , completionHandler : @escaping(_ success : Bool? , _ error : NSError?) -> Void)
     {
