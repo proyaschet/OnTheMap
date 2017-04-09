@@ -14,20 +14,28 @@ let udacityClient = UdacityClient.singleton()
 let parseClient = ParseClient.singleton()
 let dataSource = DataSource.singleton()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(studentLocationsDidError), name: NSNotification.Name(rawValue: "\(ParseClient.urlMethod.studentLocation)\(ParseClient.Notifications.ObjectUpdatedError)"), object: nil)
+    }
+    
     
     @IBAction func logout(_ sender : Any)
     {
         // crashing
      udacityClient.logout { (success, error) in
-        if(success == true)
-        {
-            self.dismiss(animated: true, completion: nil)
+        self.performUIUpdatesOnMain {
+            if(success == true)
+            {
+                self.dismiss(animated: true, completion: nil)
+            }
+            else
+            {
+                print(error as Any)
+            }
         }
-        else
-        {
-            print(error as Any)
         }
-        }
+       
     }
     
     @IBAction func refreshUsers(_ sender : Any)
@@ -53,7 +61,18 @@ let dataSource = DataSource.singleton()
             })
         }
     }
-    fileprivate func displayOverwriteAlert(_ completionHandler: ((UIAlertAction) -> Void)? = nil)
+    func studentLocationsDidError()
+    {
+        displayAlert("Could not Update Sudent Location")
+    }
+    
+     func displayAlert(_ message: String) {
+        let alertView = UIAlertController(title: "", message: message, preferredStyle: .alert)
+        alertView.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+        self.present(alertView, animated: true, completion: nil)
+    }
+    
+    func displayOverwriteAlert(_ completionHandler: ((UIAlertAction) -> Void)? = nil)
     {
         let alertView = UIAlertController(title: "Overwrite Location", message:"Would you like to overwrite", preferredStyle: .alert)
         alertView.addAction(UIAlertAction(title: "Overwrite", style: .default, handler: completionHandler))

@@ -21,6 +21,8 @@
 		A51790941E865CFF00853127 /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51790931E865CFF00853127 /* UdacityClient.swift */; };
 		A51790961E865D3D00853127 /* ParseConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51790951E865D3D00853127 /* ParseConstants.swift */; };
 		A51790981E865D5F00853127 /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51790971E865D5F00853127 /* ParseClient.swift */; };
+		A525C8EA1E98A9A700946F44 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A525C8E91E98A9A700946F44 /* UserTableViewCell.swift */; };
+		A525C8EC1E99001800946F44 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A525C8EB1E99001800946F44 /* MapViewController.swift */; };
 		A5D92B9D1E87A9950027B6AE /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D92B9C1E87A9950027B6AE /* Session.swift */; };
 		A5D92B9F1E8802DC0027B6AE /* CommonConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D92B9E1E8802DC0027B6AE /* CommonConstants.swift */; };
 		A5DE793C1E8F890B0097FE57 /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DE793B1E8F890B0097FE57 /* GCDBlackBox.swift */; };
@@ -70,6 +72,8 @@
 		A51790931E865CFF00853127 /* UdacityClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityClient.swift; sourceTree = "<group>"; };
 		A51790951E865D3D00853127 /* ParseConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseConstants.swift; sourceTree = "<group>"; };
 		A51790971E865D5F00853127 /* ParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
+		A525C8E91E98A9A700946F44 /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		A525C8EB1E99001800946F44 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		A5D92B9C1E87A9950027B6AE /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		A5D92B9E1E8802DC0027B6AE /* CommonConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonConstants.swift; sourceTree = "<group>"; };
 		A5DE793B1E8F890B0097FE57 /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
@@ -131,6 +135,7 @@
 				A5DE793B1E8F890B0097FE57 /* GCDBlackBox.swift */,
 				A5D92B9E1E8802DC0027B6AE /* CommonConstants.swift */,
 				A51790861E8649A000853127 /* Model */,
+				A525C8E81E98A97300946F44 /* View */,
 				A5D92B9B1E87A8730027B6AE /* Controller */,
 				A51790831E85A64300853127 /* Assets */,
 				A51790601E85A4B100853127 /* Info.plist */,
@@ -206,6 +211,14 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		A525C8E81E98A97300946F44 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A525C8E91E98A9A700946F44 /* UserTableViewCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		A5D92B9B1E87A8730027B6AE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -213,6 +226,7 @@
 				A5F688E81E91626100062E0E /* TabViewController.swift */,
 				A5F688EA1E9176DD00062E0E /* PostingViewController.swift */,
 				A5F688EC1E91847B00062E0E /* TableViewController.swift */,
+				A525C8EB1E99001800946F44 /* MapViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -365,8 +379,10 @@
 				A51790551E85A4B100853127 /* AppDelegate.swift in Sources */,
 				A5F688ED1E91847B00062E0E /* TableViewController.swift in Sources */,
 				A5D92B9F1E8802DC0027B6AE /* CommonConstants.swift in Sources */,
+				A525C8EC1E99001800946F44 /* MapViewController.swift in Sources */,
 				A5F688E91E91626100062E0E /* TabViewController.swift in Sources */,
 				A51790961E865D3D00853127 /* ParseConstants.swift in Sources */,
+				A525C8EA1E98A9A700946F44 /* UserTableViewCell.swift in Sources */,
 				A5F688EB1E9176DD00062E0E /* PostingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

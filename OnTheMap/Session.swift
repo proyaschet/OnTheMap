@@ -19,7 +19,7 @@ struct appData {
     let domain: String
 }
 
-class Session
+class Session 
 {
     let session : URLSession
     let data : appData
@@ -41,12 +41,12 @@ class Session
             }
         }
         if let body = body {
-            //request.httpBody = try! JSONSerialization.data(withJSONObject: body, options: JSONSerialization.WritingOptions())
-            request.httpBody = "{\"udacity\": {\"username\": \"amanipatra@gmail.com\", \"password\": \"wangnana\"}}".data(using: String.Encoding.utf8)
+            request.httpBody = try! JSONSerialization.data(withJSONObject: body, options: JSONSerialization.WritingOptions())
+            
           
         }
         
-        print(url)
+       // print(url)
         let task = session.dataTask(with: request as URLRequest, completionHandler: { (data1, response, error) in
             
             // was there an error?
@@ -64,8 +64,8 @@ class Session
             }
             
             responseHandler(data1, nil)
-            print("success 1")
-            print(data1 as Any)
+            //print("success 1")
+            //print(data1 as Any)
         })
         task.resume()
     }
@@ -102,8 +102,8 @@ class Session
             }
             
             responseHandler(data1, nil)
-            print("success 1")
-            print(data1 as Any)
+            //print("success 1")
+            //print(data1 as Any)
         })
         task.resume()
     }

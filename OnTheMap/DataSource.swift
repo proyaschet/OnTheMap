@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import UIKit
 
-class DataSource : NSObject
+public class DataSource : NSObject
 {
     let parseClient = ParseClient.singleton()
     var student = [userLocation]()
@@ -47,6 +48,28 @@ class DataSource : NSObject
         }
     }
 }
+
+extension DataSource : UITableViewDataSource
+{
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(student.count)
+        return student.count
+        
+    }
+    
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "userCell") as! UserTableViewCell
+        
+       let user = student[indexPath.item].student
+        cell.uiForCell(user: user)
+        return cell
+    }
+}
+
+
+
+
+
 
 
     

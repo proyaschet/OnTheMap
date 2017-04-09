@@ -41,15 +41,15 @@ class func singleton() -> UdacityClient
         if let body = body
         {
             reqBody = "{\"\(HTTPBodyKeys.Udacity)\": {\"\(HTTPBodyKeys.Username)\": \"\(body[HTTPBodyKeys.Username] as! String)\", \"\(HTTPBodyKeys.Password)\": \"\(body[HTTPBodyKeys.Password] as! String)\"}}"
-            print(reqBody)
+            //print(reqBody)
         }
   session.makeRequestUdacity(url, method: method, headers: requireHeaders, body:  reqBody) { (data, error) in
     if let data = data
     {
         let parseResult = try! JSONSerialization.jsonObject(with: data.subdata(in: Range(5 ..< data.count)), options: .allowFragments) as! [String:AnyObject]
         responseHandler(parseResult , nil)
-        print(parseResult)
-        print("success 2")
+        //print(parseResult)
+        //print("success 2")
     }
     else {
         responseHandler(nil, error)
@@ -69,27 +69,25 @@ class func singleton() -> UdacityClient
         login = [HTTPBodyKeys.Username : username as AnyObject , HTTPBodyKeys.Password : password as AnyObject]
        requestUdacity(url: loginUrl, method: .POST, body: login) { (parsedResult, error) in
         
-        print("lol1")
-        print(error)
+     
         guard error == nil else {
             completionHandler(nil,error!)
-            print("lol 2")
+          
             return
         }
-        print(parsedResult)
-        print("lol 3")
+        
         if let user = parsedResult?[JSONResponseKeys.Account] as? [String:AnyObject],
             let key = user[JSONResponseKeys.UserKey] as? String
         {
-            print(key)
-            print("lol 4")
+           // print(key)
+           
             completionHandler(key, nil)
             return
    
         }
         }
      //to add error
-        print("fuck offx")
+        
         
      }
     

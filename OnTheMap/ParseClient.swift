@@ -104,6 +104,9 @@ class ParseClient
         let postUrl = session.urlGenerator(urlMethod.studentLocation)
         let posturlBody : [String : AnyObject] = [BodyKeys.UniqueKey : location.student.uniqueKey as AnyObject,BodyKeys.FirstName : location.student.firstName as AnyObject,BodyKeys.LastName : location.student.lastName as AnyObject,BodyKeys.MapString : location.location.mapString as AnyObject,BodyKeys.MediaURL : location.student.mediaURL as AnyObject,BodyKeys.Latitude : location.location.latitude as AnyObject,BodyKeys.Longitude : location.location.longitude as AnyObject]
         
+        /*let postBody = "{\"\(BodyKeys.UniqueKey)\": \"\(location.student.uniqueKey)\", \"\(BodyKeys.FirstName)\": \"\(location.student.firstName)\", \"\(BodyKeys.LastName)\": \"\(location.student.lastName )\",\"\(BodyKeys.MapString)\": \"\(location.location.mapString)\", \"\(BodyKeys.MediaURL)\": \"\(location.student.mediaURL)\",\"\(BodyKeys.Latitude)\": \(location.location.latitude), \"\(BodyKeys.Longitude)\": \(location.location.longitude)}"*/
+       
+        
       ParseRequest(url: postUrl, methhod: .POST, body: posturlBody) { (parsedResult, error) in
         guard(error == nil) else
         {
