@@ -85,8 +85,9 @@ class func singleton() -> UdacityClient
             return
    
         }
+        completionHandler(nil,self.session.errorWithStatus(domainName: "Udacity", 0, description: Errors.UnableToLogin))
+
         }
-     //to add error
         
         
      }
@@ -123,9 +124,9 @@ class func singleton() -> UdacityClient
             completionHandler(true,nil)
             return
         }
-        
+     completionHandler(false,self.session.errorWithStatus(domainName: "Udacity", 0, description: Errors.UnableToLogout))
     }
-     //to add error
+    
     }
     
     func getStudentDetails(_ userKey : String , completionHandler : @escaping(_ student :Student? , _ error : NSError?) -> Void)
@@ -145,9 +146,10 @@ class func singleton() -> UdacityClient
                 completionHandler(student,nil)
                 return
             }
+            completionHandler(nil,self.session.errorWithStatus(domainName: "Udacity", 0, description: Errors.userData))
+
         }
-        //to add error
-    }
+            }
     
     
 }

@@ -118,8 +118,8 @@ class Session
         components.scheme = data.scheme
         components.host = data.host
         components.path = data.path + (method ?? "") + (withPathExtension ?? "")
-        print(method)
-        print(withPathExtension)
+        //print(method)
+        //print(withPathExtension)
         if let parameters = parameters {
             components.queryItems = [URLQueryItem]()
             for (key, value) in parameters {
@@ -128,6 +128,10 @@ class Session
             }
         }
         return components.url!
+    }
+    func errorWithStatus(domainName: String,_ status: Int, description: String) -> NSError {
+        let userInfo = [NSLocalizedDescriptionKey: description]
+        return NSError(domain: domainName, code: status, userInfo: userInfo)
     }
     
     

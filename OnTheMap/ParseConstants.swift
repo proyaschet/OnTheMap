@@ -19,6 +19,7 @@ extension ParseClient
         static let noRecord = "No object record at key."
         static let couldNotPostLocation = "Student location could not be posted."
         static let couldNotUpdateLocation = "Student location could not be updated."
+        static let noRecords = "No student record available"
     }
     
     struct urlMethod {

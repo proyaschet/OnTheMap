@@ -16,10 +16,6 @@ class PostingViewController: UIViewController {
     var placemark: CLPlacemark? = nil
     var objectId : String? = nil
     @IBOutlet weak var postingMapView: MKMapView!
-   // @IBOutlet weak var studyingLabel: UILabel!
-   // @IBOutlet weak var topSectionView: UIView!
-    //@IBOutlet weak var middleSectionView: UIView!
-    //@IBOutlet weak var bottomSectionView: UIView!
     @IBOutlet weak var mapStringTextField: UITextField!
     @IBOutlet weak var mediaURLTextField: UITextField!
     @IBOutlet weak var cancelButton: UIButton!
@@ -28,10 +24,9 @@ class PostingViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        activityIndicator.isHidden = true
     }
 
     
@@ -41,12 +36,14 @@ class PostingViewController: UIViewController {
     }
     @IBAction func findOnMap(_ sender : Any)
     {
+        acticityIndicatorConfiguration(state: true)
         if mapStringTextField.text!.isEmpty
         {
-            print("no input location")
+            displayAlert("NO INPUT LOCATION")
+           acticityIndicatorConfiguration(state: false)
         }
         
-        // add activity indicator
+        
         performUIUpdatesOnMain {
             let geocoder = CLGeocoder()
             do
@@ -54,16 +51,23 @@ class PostingViewController: UIViewController {
                 geocoder.geocodeAddressString(self.mapStringTextField.text!, completionHandler: { (result, error) in
                     if let error = error
                     {
-                        print("error")
+                       self.displayAlert("error")
+                        //self.activityIndicator.stopAnimating()
+                        self.acticityIndicatorConfiguration(state: false)
                     }
                     else if(result?.isEmpty)!
                     {
-                        print("no location found")
+                        self.displayAlert("no location found")
+                        //print("no location found")
+                        //self.activityIndicator.stopAnimating()
+                          self.acticityIndicatorConfiguration(state: false)
                     }
                     else
                     {
                         self.placemark = result![0]
                         self.postingMapView.showAnnotations([MKPlacemark(placemark: self.placemark!)], animated: true)
+                        //self.activityIndicator.stopAnimating()
+                        self.acticityIndicatorConfiguration(state: false)
                     }
                 })
             }
@@ -73,26 +77,30 @@ class PostingViewController: UIViewController {
     
     @IBAction func submitLocation(_ sender : Any)
     {
-        //activity indicator
+        self.acticityIndicatorConfiguration(state: true)
         if mediaURLTextField.text!.isEmpty {
-            //displayAlert(AppConstants.Errors.URLEmpty)
+            displayAlert(Errors.URLEmpty)
+            self.acticityIndicatorConfiguration(state: false)
             return
         }
         guard let student = dataSource.studentLoggedIn,
             let placemark = placemark,
             let postedLocation = placemark.location else {
-                //displayAlert(AppConstants.Errors.StudentAndPlacemarkEmpty)
+                displayAlert("StudentAndPlacemarkEmpty")
+                self.acticityIndicatorConfiguration(state: false)
                 return
         }
         let requestCompletionHandler :(NSError?,String) -> Void = {(error , url) in
             if let _ = error
             {
+                self.acticityIndicatorConfiguration(state: false)
                 self.dismiss(animated: true, completion: nil)
             }
             else
             {
                 self.dataSource.studentLoggedIn.mediaURL = url
                 self.dataSource.studentLocations()
+            self.acticityIndicatorConfiguration(state: false)
                 self.dismiss(animated: true, completion: nil)
             }
             
@@ -116,6 +124,30 @@ class PostingViewController: UIViewController {
             })
         }
         
+        
+        
+        
+    }
+    func displayAlert(_ message: String, completionHandler: ((UIAlertAction) -> Void)? = nil) {
+        self.performUIUpdatesOnMain{
+            self.activityIndicator.stopAnimating()
+            let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Dismissytrew", style: .default, handler: completionHandler))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    func acticityIndicatorConfiguration(state : Bool)
+    {
+        if(state == true)
+        {
+            activityIndicator.isHidden = false
+            activityIndicator.startAnimating()
+        }
+        else
+        {
+            activityIndicator.isHidden = true
+            activityIndicator.stopAnimating()
+        }
     }
     
     

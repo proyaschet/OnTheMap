@@ -22,15 +22,17 @@ let dataSource = DataSource.singleton()
     
     @IBAction func logout(_ sender : Any)
     {
-        // crashing
+    UIApplication.shared.isNetworkActivityIndicatorVisible = true
      udacityClient.logout { (success, error) in
         self.performUIUpdatesOnMain {
             if(success == true)
             {
                 self.dismiss(animated: true, completion: nil)
+                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }
             else
             {
+                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 print(error as Any)
             }
         }

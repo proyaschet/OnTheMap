@@ -71,8 +71,9 @@ class ParseClient
                     completionHandler(studentInfo,nil)
                     return
                 }
+                completionHandler(nil,self.session.errorWithStatus(domainName: "Udacity", 0, description: Errors.noRecord))
             }
-          //add error
+           
         }
     }
     
@@ -92,7 +93,9 @@ class ParseClient
                 return
                 
             }
+            completionHandler(nil,self.session.errorWithStatus(domainName: "Udacity", 0, description: Errors.noRecords))
         }
+        
         
     }
     
@@ -113,13 +116,13 @@ class ParseClient
             completionHandler(false,error)
             return
         }
-        if let parsedResult = parsedResult,let objId = parsedResult[JSONResponseKeys.ObjectID] as? String
+        if let parsedResult = parsedResult,let _ = parsedResult[JSONResponseKeys.ObjectID] as? String
         {
             completionHandler(true, nil)
             return
         }
+         completionHandler(nil,self.session.errorWithStatus(domainName: "Udacity", 0, description: Errors.couldNotPostLocation))
         }
-        //TODO add error
         
         
     }
@@ -134,14 +137,15 @@ class ParseClient
                 completionHandler(false,error)
                 return
             }
-            if let parsedResult = parsedResult,let updateId = parsedResult[JSONResponseKeys.UpdatedAt] as? String
+            if let parsedResult = parsedResult,let _ = parsedResult[JSONResponseKeys.UpdatedAt] as? String
             {
                 completionHandler(true, nil)
                 return
             }
+             completionHandler(nil,self.session.errorWithStatus(domainName: "Udacity", 0, description: Errors.couldNotUpdateLocation))
             
         }
-        //TODO add error
+       
         
     }
     

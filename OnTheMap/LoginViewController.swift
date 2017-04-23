@@ -14,6 +14,8 @@ class ViewController: UIViewController {
     
     let udacityClient = UdacityClient.singleton()
     let dataSource = DataSource.singleton()
+    
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +48,7 @@ class ViewController: UIViewController {
         {
             
             debugLabel.text = Errors.UserPassEmpty
+            self.errorState()
         }
         else
         {
@@ -54,7 +57,7 @@ class ViewController: UIViewController {
                     guard let userKey = userKey else
                     {
                         self.debugLabel.text = "User not found"
-                        self.initialState()
+                        self.errorState()
                         return
                     }
                     
@@ -98,24 +101,40 @@ class ViewController: UIViewController {
     
     func startActivityIndicator()
     {
-        activityIndicator.isHidden = false
-        activityIndicator.startAnimating()
+        emailTextField.isEnabled = false
+        passwordTextField.isEnabled = false
         signInButton.isEnabled = false
+        signUpButton.isEnabled = false
+        activityIndicator.isHidden = false
+        
+        activityIndicator.startAnimating()
+        
         debugLabel.text = ""
     }
     func initialState()  {
         activityIndicator.isHidden = true
         activityIndicator.stopAnimating()
         signInButton.isEnabled = true
+        emailTextField.isEnabled = true
+        passwordTextField.isEnabled = true
+        signUpButton.isEnabled = true
         emailTextField.text=""
         passwordTextField.text=""
         
     }
-    
-    func logintime()
-    {
-        startActivityIndicator()
+    func errorState()  {
+        activityIndicator.isHidden = true
+        activityIndicator.stopAnimating()
+        signInButton.isEnabled = true
+        emailTextField.isEnabled = true
+        passwordTextField.isEnabled = true
+        signUpButton.isEnabled = true
+        
+        
     }
+ 
+    
+   
     
 }
 
