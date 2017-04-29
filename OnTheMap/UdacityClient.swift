@@ -41,15 +41,14 @@ class func singleton() -> UdacityClient
         if let body = body
         {
             reqBody = "{\"\(HTTPBodyKeys.Udacity)\": {\"\(HTTPBodyKeys.Username)\": \"\(body[HTTPBodyKeys.Username] as! String)\", \"\(HTTPBodyKeys.Password)\": \"\(body[HTTPBodyKeys.Password] as! String)\"}}"
-            //print(reqBody)
+           
         }
   session.makeRequestUdacity(url, method: method, headers: requireHeaders, body:  reqBody) { (data, error) in
     if let data = data
     {
         let parseResult = try! JSONSerialization.jsonObject(with: data.subdata(in: Range(5 ..< data.count)), options: .allowFragments) as! [String:AnyObject]
         responseHandler(parseResult , nil)
-        //print(parseResult)
-        //print("success 2")
+        
     }
     else {
         responseHandler(nil, error)
@@ -63,7 +62,7 @@ class func singleton() -> UdacityClient
     {
         
         let loginUrl = session.urlGenerator(URLMethods.session)
-        print(loginUrl)
+     
         var login = [String : AnyObject]()
         
         login = [HTTPBodyKeys.Username : username as AnyObject , HTTPBodyKeys.Password : password as AnyObject]
@@ -79,7 +78,6 @@ class func singleton() -> UdacityClient
         if let user = parsedResult?[JSONResponseKeys.Account] as? [String:AnyObject],
             let key = user[JSONResponseKeys.UserKey] as? String
         {
-           // print(key)
            
             completionHandler(key, nil)
             return
@@ -140,8 +138,7 @@ class func singleton() -> UdacityClient
             }
             if let parsedResult = parsedResult , let user = parsedResult[JSONResponseKeys.User],let firstName = user[JSONResponseKeys.FirstName] as? String,let lastname = user[JSONResponseKeys.LastName] as? String
             {
-                print(firstName)
-                print(lastname)
+                
                 let student = Student(uniqueKey: userKey, firstName: firstName, lastName: lastname,mediaURL : "")
                 completionHandler(student,nil)
                 return

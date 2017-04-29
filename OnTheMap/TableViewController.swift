@@ -24,6 +24,24 @@ class TableViewController: UITableViewController {
     {
         tableView.reloadData()
     }
+    fileprivate func displayAlert(_ message: String) {
+        let alertView = UIAlertController(title: "", message: message, preferredStyle: .alert)
+        alertView.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+        self.present(alertView, animated: true, completion: nil)
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let userUrl = dataSource.student[indexPath.row].student.mediaURL
+        
+        if let url = URL(string: userUrl)
+        {
+             UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+        else
+        {
+            displayAlert("InvalidURL")
+        }
+    }
 
   
 

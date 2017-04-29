@@ -52,7 +52,7 @@ public class DataSource : NSObject
 extension DataSource : UITableViewDataSource
 {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(student.count)
+        //print(student.count)
         return student.count
         
     }

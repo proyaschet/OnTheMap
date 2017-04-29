@@ -46,7 +46,7 @@ class Session
           
         }
         
-       // print(url)
+      
         let task = session.dataTask(with: request as URLRequest, completionHandler: { (data1, response, error) in
             
             // was there an error?
@@ -64,11 +64,12 @@ class Session
             }
             
             responseHandler(data1, nil)
-            //print("success 1")
-            //print(data1 as Any)
+           
         })
         task.resume()
     }
+    
+    
     func makeRequestUdacity(_ url: URL, method: HTTPMethod, headers: [String:String]? = nil, body: String? = nil, responseHandler: @escaping (Data?, NSError?) -> Void)
     {
         let request = NSMutableURLRequest(url: url)
@@ -84,7 +85,7 @@ class Session
             
         }
         
-        print(url)
+       
         let task = session.dataTask(with: request as URLRequest, completionHandler: { (data1, response, error) in
             
             // was there an error?
@@ -102,8 +103,7 @@ class Session
             }
             
             responseHandler(data1, nil)
-            //print("success 1")
-            //print(data1 as Any)
+           
         })
         task.resume()
     }
@@ -118,8 +118,7 @@ class Session
         components.scheme = data.scheme
         components.host = data.host
         components.path = data.path + (method ?? "") + (withPathExtension ?? "")
-        //print(method)
-        //print(withPathExtension)
+        
         if let parameters = parameters {
             components.queryItems = [URLQueryItem]()
             for (key, value) in parameters {

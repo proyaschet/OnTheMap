@@ -23,10 +23,23 @@ class PostingViewController: UIViewController {
     @IBOutlet weak var submitButton:  UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
-
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        mapStringTextField.delegate = self
+        mediaURLTextField.delegate = self
+        
+        
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         activityIndicator.isHidden = true
+        
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+       
+        
     }
 
     
@@ -132,7 +145,7 @@ class PostingViewController: UIViewController {
         self.performUIUpdatesOnMain{
             self.activityIndicator.stopAnimating()
             let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Dismissytrew", style: .default, handler: completionHandler))
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: completionHandler))
             self.present(alert, animated: true, completion: nil)
         }
     }
@@ -149,9 +162,18 @@ class PostingViewController: UIViewController {
             activityIndicator.stopAnimating()
         }
     }
-    
+
     
     
     
     
 }
+
+extension PostingViewController : UITextFieldDelegate
+{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true;
+}
+}
+

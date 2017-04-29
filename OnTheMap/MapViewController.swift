@@ -70,15 +70,19 @@ extension MapViewController : MKMapViewDelegate
         
         return pinView
     }
+    fileprivate func displayAlert(_ message: String) {
+        let alertView = UIAlertController(title: "", message: message, preferredStyle: .alert)
+        alertView.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+        self.present(alertView, animated: true, completion: nil)
+    }
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
             if let mediaURL = URL(string: ((view.annotation?.subtitle)!)!) {
-                if UIApplication.shared.canOpenURL(mediaURL) {
-                    UIApplication.shared.openURL(mediaURL)
-                } else {
-                    print("cannot open url")
+                 UIApplication.shared.open(mediaURL, options: [:], completionHandler: nil)
+            }else {
+                    displayAlert("cannot open url")
                 }
-            }
+            
         }
     }
 

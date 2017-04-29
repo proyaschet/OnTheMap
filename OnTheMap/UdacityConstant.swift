@@ -11,7 +11,7 @@ extension UdacityClient
 {
     struct SignUp
     {
-        static let SignUpURL = "https://www.udacity.com/account/auth#!/signup"
+        static let SignUpURL = "https://auth.udacity.com/sign-up"
     }
     
     struct Domain {

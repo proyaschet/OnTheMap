@@ -79,7 +79,7 @@ let dataSource = DataSource.singleton()
         let alertView = UIAlertController(title: "Overwrite Location", message:"Would you like to overwrite", preferredStyle: .alert)
         alertView.addAction(UIAlertAction(title: "Overwrite", style: .default, handler: completionHandler))
         alertView.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        self.present(alertView, animated: true, completion: nil)
+        present(alertView, animated: true, completion: nil)
     }
     
     func launchPostingController(_ objectID: String? = nil)

@@ -222,11 +222,11 @@
 		A5D92B9B1E87A8730027B6AE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				A51790561E85A4B100853127 /* LoginViewController.swift */,
+				A525C8EB1E99001800946F44 /* MapViewController.swift */,
 				A5F688E81E91626100062E0E /* TabViewController.swift */,
+				A51790561E85A4B100853127 /* LoginViewController.swift */,
 				A5F688EA1E9176DD00062E0E /* PostingViewController.swift */,
 				A5F688EC1E91847B00062E0E /* TableViewController.swift */,
-				A525C8EB1E99001800946F44 /* MapViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
